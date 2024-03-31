@@ -21,7 +21,7 @@ public class SampleConsumer {
     public static void main(String[] args) {
         Properties kaProperties = new Properties();  //<1>
         kaProperties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,
-                "localhost:9092,localhost:9093,localhost:9094");
+                "172.31.207.251:9092");
         kaProperties.put(CommonClientConfigs.GROUP_ID_CONFIG, "billy_consumer");
         kaProperties.put("enable.auto.commit", "true");
         kaProperties.put("auto.commit.interval.ms", "1000");
@@ -38,7 +38,7 @@ public class SampleConsumer {
 
     private void consume(Properties kaProperties) {
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(kaProperties)) {
-            consumer.subscribe(List.of("kia_topic"));  //<2>
+            consumer.subscribe(List.of("kia_bill_1", "kia_alert_connect"));  //<2>
 
             while (keepConsuming) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(250));  //<3>

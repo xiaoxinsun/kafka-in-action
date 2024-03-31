@@ -6,4 +6,4 @@
 #wsl
 export KAF_HOME=/mnt/c/workspace/kafka_2.13-2.8.2
 
-$KAF_HOME/bin/zookeeper-server-start.sh -daemon $KAF_HOME/config/zookeeper.properties
+$KAF_HOME/bin/zookeeper-server-stop.sh $KAF_HOME/config/zookeeper.properties
